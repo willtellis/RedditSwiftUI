@@ -8,15 +8,22 @@
 import SwiftUI
 import Combine
 
-private let postsPublisher: AnyPublisher<[Post], Never> = RedditAPIClient()
-    .postsPublisher(after: nil)
-    .receive(on: DispatchQueue.main)
-    .map { PostsGenerator.make(model: $0) }
-    .catch { Just(PostsGenerator.make(with: $0)) }
-    .eraseToAnyPublisher()
-
 struct ContentView: View {
     @State var posts: [Post] = []
+    @State private var after: String?
+
+    var apiClient = RedditAPIClient()
+
+    private let postsSubject = PassthroughSubject<String?, Never>()
+    private var postsPublisher: AnyPublisher<([Post], String?), Never> {
+        return postsSubject
+            .removeDuplicates()
+            .flatMap { after in apiClient.postsPublisher(after: after) }
+            .receive(on: DispatchQueue.main)
+            .map { (PostsGenerator.make(model: $0), $0.data?.after) }
+            .catch { Just((PostsGenerator.make(with: $0), nil)) }
+            .eraseToAnyPublisher()
+    }
 
     var body: some View {
         NavigationView {
@@ -25,9 +32,13 @@ struct ContentView: View {
                     .padding()
             }
             .navigationTitle("Reddit")
-            .onReceive(postsPublisher, perform: { posts in
+            .onAppear {
+                postsSubject.send(nil)
+            }
+            .onReceive(postsPublisher) { (posts, after) in
                 self.posts = posts
-            })
+                self.after = after
+            }
         }
     }
 }
