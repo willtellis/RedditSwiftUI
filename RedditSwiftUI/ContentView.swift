@@ -30,16 +30,32 @@ struct ContentView: View {
             List(posts) { post in
                 Text(post.title ?? "")
                     .padding()
+                    .onAppear {
+                        guard posts.isLastItem(post) else {
+                            return
+                        }
+                        postsSubject.send(after)
+                    }
             }
             .navigationTitle("Reddit")
             .onAppear {
                 postsSubject.send(nil)
             }
             .onReceive(postsPublisher) { (posts, after) in
-                self.posts = posts
+                self.posts += posts
                 self.after = after
             }
         }
+    }
+}
+
+extension RandomAccessCollection where Self.Element: Identifiable {
+    func isLastItem<Item: Identifiable>(_ item: Item) -> Bool {
+        guard let lastItem = last else {
+            return false
+        }
+
+        return item.id.hashValue == lastItem.id.hashValue
     }
 }
 
