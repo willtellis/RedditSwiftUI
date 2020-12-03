@@ -22,10 +22,14 @@ struct PostsGenerator {
     }
 }
 
-struct Post: Identifiable {
+struct Post: Identifiable, Hashable {
     var id: String? {
         return title
     }
 
     let title: String?
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+    }
 }

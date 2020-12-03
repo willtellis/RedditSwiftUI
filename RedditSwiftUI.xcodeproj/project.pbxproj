@@ -18,6 +18,7 @@
 		78548D0D2554A34D00B7EB57 /* RedditSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78548D0C2554A34D00B7EB57 /* RedditSwiftUIUITests.swift */; };
 		78C55869255DDCB000A203C2 /* RedditAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C55868255DDCB000A203C2 /* RedditAPIClient.swift */; };
 		78C5586E255DDCD200A203C2 /* PostsAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C5586D255DDCD200A203C2 /* PostsAPIResponse.swift */; };
+		78E01475257955D800F1AF0D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E01474257955D800F1AF0D /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		78548D0E2554A34D00B7EB57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78C55868255DDCB000A203C2 /* RedditAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditAPIClient.swift; sourceTree = "<group>"; };
 		78C5586D255DDCD200A203C2 /* PostsAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPIResponse.swift; sourceTree = "<group>"; };
+		78E01474257955D800F1AF0D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				78548CEA2554A34A00B7EB57 /* AppDelegate.swift */,
 				78548CEC2554A34A00B7EB57 /* SceneDelegate.swift */,
 				78548CEE2554A34A00B7EB57 /* ContentView.swift */,
+				78E01474257955D800F1AF0D /* ContentViewModel.swift */,
 				78548CF02554A34C00B7EB57 /* Assets.xcassets */,
 				78548CF52554A34C00B7EB57 /* LaunchScreen.storyboard */,
 				78548CF82554A34C00B7EB57 /* Info.plist */,
@@ -286,6 +289,7 @@
 				78548CEB2554A34A00B7EB57 /* AppDelegate.swift in Sources */,
 				78C55869255DDCB000A203C2 /* RedditAPIClient.swift in Sources */,
 				78524BF52564724100074B14 /* PostsGenerator.swift in Sources */,
+				78E01475257955D800F1AF0D /* ContentViewModel.swift in Sources */,
 				78C5586E255DDCD200A203C2 /* PostsAPIResponse.swift in Sources */,
 				78548CED2554A34A00B7EB57 /* SceneDelegate.swift in Sources */,
 				78548CEF2554A34A00B7EB57 /* ContentView.swift in Sources */,
